@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Todo extends Component {
   state = {
     count: 0,
-    inputText: ' ',
+    inputText: '',
     todos: []
   }
 
@@ -19,21 +19,19 @@ class Todo extends Component {
     const currentTodos = this.state.todos
     currentTodos.push(this.state.inputText)
     console.log(currentTodos)
-    this.setState({ todos = currentTodos })
+    this.setState({ todos: currentTodos })
   }
 
   render() {
     return (
       <div>
-        <h1>Count:</h1>
-        <h3>{this.state.count}</h3>
-        <button onClick={this.increase}>Increase counter</button>
         <input type="text"
+        placeholder="What needs to be done?"
         onChange={this.handleTextChange}
         value={this.state.inputText}/>
         <button onClick={this.submitTodo}>Add Todo</button>
         {
-          this.state.todos.map(todo, index => {
+          this.state.todos.map((todo, index) => {
             return (
               <p key={index}>{todo}</p>
             )
